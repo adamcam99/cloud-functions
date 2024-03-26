@@ -1,0 +1,14 @@
+{
+  "name": "wookiecookie",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "func start",
+    "test": "echo \"No tests yet...\""
+  },
+  "dependencies": {
+    "@azure/functions": "^4.0.0",
+    "mssql": "^10.0.2"
+  },
+  "main": "src/functions/*.js"
+}
