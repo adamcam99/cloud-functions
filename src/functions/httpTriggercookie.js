@@ -16,8 +16,15 @@ app.http('receiveDessertOrder', {
         console.log("Order received:", order);
 
         
-        if (!order.customerId || !order.Meals || order.Meals.length === 0) {
-            return { status: 400, body: "Invalid order format. Ensure customerId and at least one meal are included." };
+        if (!order || typeof order.customerId !== 'number' || !Array.isArray(order.Meals) || order.Meals.length === 0) {
+            context.res = { status: 400, body: "Invalid order format. Ensure customerId is a number and at least one meal is included." };
+            return;
+        }
+
+        const hasInvalidMealIds = order.Meals.some(meal => typeof meal.MealId !== 'number');
+        if (hasInvalidMealIds) {
+            context.res = { status: 400, body: "Invalid MealId format. Each MealId must be a number." };
+            return;
         }
         
         
