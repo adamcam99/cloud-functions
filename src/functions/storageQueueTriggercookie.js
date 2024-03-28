@@ -28,10 +28,10 @@ app.storageQueue('processDessertOrder', {
 
             // Inserting the order into the Orders table
             request.input('CustomerId', sql.Int, order.customerId);
-            request.input('OrderDate', sql.DateTime, new Date(order.orderDate)); 
+            request.input('OrderDateTime', sql.DateTime, new Date(order.orderDate)); 
             
             const orderInsertResult = await request.query(`
-                INSERT INTO Orders (CustomerId, OrderDate) OUTPUT INSERTED.OrderId VALUES (@CustomerId, @OrderDate);
+                INSERT INTO Orders (CustomerId, OrderDateTime) OUTPUT INSERTED.OrderId VALUES (@CustomerId, @OrderDateTime);
             `);
             const orderId = orderInsertResult.recordset[0].OrderId;
             console.log(`Order inserted with ID: ${orderId}`);

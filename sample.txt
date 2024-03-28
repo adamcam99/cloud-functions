@@ -1,0 +1,12 @@
+{
+  "customerId": 1,
+  "orderDate": "2024-03-28T12:30:00Z",
+  "Meals": [
+    {
+      "MealId": 1
+    },
+    {
+      "MealId": 2
+    }
+  ]
+}
